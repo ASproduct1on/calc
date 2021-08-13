@@ -8,7 +8,7 @@ let addExpenses = "internet, taxi, flat";
 
 let deposit = true;
 
-let mission = Infinity;
+let mission = 10000000;
 
 let period = 2;
 
@@ -30,6 +30,6 @@ console.log(addExpenses.toLowerCase().split(", "));
 
 let budgetDay = money/30; 
 
-console.log(budgetDay);
+console.log(Math.round(budgetDay));
 
 
