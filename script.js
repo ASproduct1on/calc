@@ -8,7 +8,7 @@ console.log("Hello curator!");
 
 // Variables 
 
-let money = prompt("Сколько ты зарабатываешь за месяц?");
+let money = +prompt("Сколько ты зарабатываешь за месяц?");
 
 let income = "freelance";
 
@@ -25,7 +25,11 @@ let period = 2;
 
 // Methods & Properties
 
-console.log(typeof money, typeof income, typeof deposit);
+console.log(typeof money);
+
+console.log(typeof income);
+
+console.log(typeof deposit);
 
 console.log(addExpenses.length);
 
@@ -67,7 +71,7 @@ if (budgetDay>=1200) {
 } else if (600 > budgetDay && budgetDay >= 0) {
     console.log("У вас низкий  уровень!");
 } else {
-    console.log("Что то пошло не так!")
+    console.log("Что то пошло не так!");
 }
 
 
