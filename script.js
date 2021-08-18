@@ -37,7 +37,7 @@ console.log(("Период равен " +  period + " месяца.") + " " + ("
 
 console.log(addExpenses.toLowerCase().split(", "));
 
-let budgetDay = money/30; 
+let budgetDay = accumulatedMonth/30; 
 
 console.log(Math.round(budgetDay));
 
@@ -52,11 +52,11 @@ let amount1 = prompt("Во сколько это обойдется в перв�
 
 let amount2 = prompt("Во сколько это обойдется во втором случае?");
 
-let timeForMission = mission / budgetMonth;
+let timeForMission = mission / budgetMonth; /* ??? */
 
 console.log("Сколько будешь идти к миссии: " + Math.ceil(timeForMission) + " Месяцев");
 
-budgetDay = budgetMonth / 30;
+budgetDay = accumulatedMonth / 30;
 
 console.log(Math.floor(budgetDay)); 
 
@@ -73,19 +73,20 @@ if (budgetDay>=1200) {
 
 // Function
 
-function getExpensesMonth() {
+/*function getExpensesMonth() {
     return amount1 + amount2;
-}
+}*/
 
 function getAccumulatedMonth() {
     return money - getExpensesMonth();
 }
 
-const accumulatedMonth = function getAccumulatedMonth();
+let accumulatedMonth =  getAccumulatedMonth();
 
 function getTargetMonth() {
     return mission / accumulatedMonth;
 }
 
-function 
+
+
 
