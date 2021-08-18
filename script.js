@@ -52,10 +52,6 @@ let amount1 = prompt("Во сколько это обойдется в перв�
 
 let amount2 = prompt("Во сколько это обойдется во втором случае?");
 
-let budgetMonth = money - amount1 -amount2;
-
-console.log("Бюджет за месяц: " + budgetMonth);
-
 let timeForMission = mission / budgetMonth;
 
 console.log("Сколько будешь идти к миссии: " + Math.ceil(timeForMission) + " Месяцев");
@@ -74,4 +70,22 @@ if (budgetDay>=1200) {
     console.log("Что то пошло не так!");
 }
 
+
+// Function
+
+function getExpensesMonth() {
+    return amount1 + amount2;
+}
+
+function getAccumulatedMonth() {
+    return money - getExpensesMonth();
+}
+
+const accumulatedMonth = function getAccumulatedMonth();
+
+function getTargetMonth() {
+    return mission / accumulatedMonth;
+}
+
+function 
 
