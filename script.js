@@ -114,7 +114,7 @@ function getTargetMonth() {
     }
 }
 
-getTargetMonth();
+getTargetMonth(); 
 
 function showTypeOf(whatType) {
     return typeof(whatType);
