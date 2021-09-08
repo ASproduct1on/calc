@@ -30,6 +30,9 @@ let amount1;
 
 let amount2;
 
+let appData = {
+    
+}
 
 function getExpensesMonth() {
     let sum = 0;
@@ -40,18 +43,18 @@ function getExpensesMonth() {
             expenses1 = prompt("Введите обязательную статью расходов?");
 
            while(isNaN(parseFloat(expensesMoney1))) {
-                expensesMoney1 = +prompt("Во сколько это обойдется?");
+                expensesMoney1 = prompt("Во сколько это обойдется?");
            }
         } 
         else if(i===1) {    
             expenses2 = prompt("Введите обязательную статью расходов другую?");
 
             while(isNaN(parseFloat(expensesMoney2))) {
-                expensesMoney2 = +prompt("Во сколько это обойдется?");
+                expensesMoney2 = prompt("Во сколько это обойдется?");
             }
         }
     }   
-    sum = expensesMoney1 + expensesMoney2;
+    sum = (expensesMoney1 * 1) + (expensesMoney2 * 1);
 
     console.log(sum);
     return sum;
@@ -59,7 +62,7 @@ function getExpensesMonth() {
 }
 
 let expensesMonth = getExpensesMonth();
-
+ 
 console.log(("Период равен " +  period + " месяца.") + " " + ("Цель заработать " + mission + " долларов."));
 
 console.log(addExpenses.toLowerCase().split(", "));
@@ -115,18 +118,5 @@ function getTargetMonth() {
 }
 
 getTargetMonth(); 
-
-function showTypeOf(whatType) {
-    return typeof(whatType);
-}
-
-showTypeOf(money);
-
-showTypeOf(income);
-
-showTypeOf(deposit);
-
-showTypeOf(expensesMonth);
-
 
 
