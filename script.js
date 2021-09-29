@@ -1,5 +1,10 @@
 'use strict';
 
+function numberHandler(value) {
+    
+    return isNaN(parseFloat(value) && isFinite(value));
+}
+
 let money;
 
 let start = function(){
@@ -17,6 +22,8 @@ let appData = {
     expenses: {},
     addExpenses: [],
     deposite: false,
+    percentDeposite: 0,
+    moneyDeposite: 0,
     mission: 50000,
     period: 2,
     budget: money,
@@ -24,8 +31,32 @@ let appData = {
     budgetMonth: 0,
     expensesMonth: 0,
     asking: function(){
+
+        if(confirm("Есть ли у вас доп. заработок?")) {
+            let cashincome;
+            let itemincome = prompt("Какой у вас есть доп.заработок?", "crypto");
+                console.log(typeof itemincome);
+                while(numberHandler(cashincome)){
+                cashincome = +prompt("Сколько в месяц вы на этом зарабатываете?", 1000);
+            }
+            appData.income[itemincome] = cashincome;
+        }
+
+
         let addExpenses = prompt("Перечислите возможные расходы через запятую");
-        appData.addExpenses = addExpenses.toLowerCase().split(',');
+        appData.addExpenses = addExpenses.toLowerCase().split(', ');
+        for(let key in appData.addExpenses ){
+            // appData.addExpenses[key] = array[indexOf()]
+            let capitaize = appData.addExpenses[key].charAt(0).toUpperCase() + appData.addExpenses[key].slice(1);
+            appData.addExpenses[key] = capitaize;
+            console.log(appData.addExpenses[key]);
+            
+        }
+        
+        console.log(appData.addExpenses.join(", "));
+        console.log(appData.addExpenses);
+
+
         appData.deposite = confirm('Есть ли у вас депозит в банке?');
         for(let i = 0; i < 2; i++) {
             let expenses1 = prompt("Введите обязательную статью расходов?");
@@ -63,7 +94,6 @@ let appData = {
         }
     },
     getStatusIncome: function(){
-    
         if (appData.budgetDay >= 1200) {
             console.log("У вас высокий доход!");
         } else if (1200 > appData.budgetDay && appData.budgetDay >= 600) {
@@ -74,7 +104,19 @@ let appData = {
             console.log("Что то пошло не так!");
         }    
     },
-
+    getInfoDeposite: function() {
+        if(appData.deposite === true) {
+            while(numberHandler(appData.percentDeposite)){
+                appData.percentDeposite = +prompt("Какой годовой процент % ?", 10);
+            }
+            while(numberHandler(appData.moneyDeposite)){
+                appData.moneyDeposite = +prompt("Какая сумма заложена?", 10000);
+            }
+        }
+    },
+    calcSavedMoney: function(){
+        return appData.budgetMonth * appData.period;
+    }
 };
 
 // Вызов методов
@@ -106,3 +148,7 @@ console.log("Наша программа включает в себя данны
 for(let key in appData){
     console.log("Свойство: " + key + " Значение: " + appData[key]);
 }
+
+
+appData.getInfoDeposite();
+console.log(appData.percentDeposite, appData.moneyDeposite, appData.calcSavedMoney());
