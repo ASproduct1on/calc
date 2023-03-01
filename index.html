@@ -1,134 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="preload" href="./font/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin> -->
-    <link rel="stylesheet" href="./css/style.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ToDo</title>
 
-    <title>Document</title>
-</head>
-<body>
-<h1>Калькулятор личного бюджета</h1>
-<section class="main">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <form class="todo-control">
+        <label>
+          <input class="header-input" type="text" placeholder="Какие планы?" />
+        </label>
+        <button class="header-button" id="add"></button>
+      </form>
+    </header>
 
-    <div class="calc">
+    <div class="todo-container">
+      <ul class="todo todo-list" id="todo"></ul>
 
-        <div class="data">
-            <div class="salary">
-                <div class="salary-title title">Месячный доход*</div>
-                <input type="text" class="salary-amount" placeholder="Сумма">
-            </div>
-
-            <div class="income">
-                <div class="income-title title">Дополнительный доход</div>
-                <div class="income-items">
-                    <input type="text" class="income-title-input" placeholder="Наименование">
-                    <input type="text" class="income-amount" placeholder="Сумма">
-                </div>
-
-                <button class="btn_plus income_add">+</button>
-            </div>
-
-            <div class="additional_income">
-                <div class="additional_income-title title">Возможный доход</div>
-                <input type="text" class="additional_income-item" placeholder="Наименование">
-                <input type="text" class="additional_income-item" placeholder="Наименование">
-            </div>
-
-            <div class="expenses">
-                <div class="expenses-title title">Обязательные расходы</div>
-                <div class="expenses-items">
-                    <input type="text" class="expenses-title-input" placeholder="Наименование">
-                    <input type="text" class="expenses-amount" placeholder="Сумма">
-                </div>
-
-                <button class="btn_plus expenses_add">+</button>
-            </div>
-            <div class="additional_expenses">
-                <div class="additional_expenses-title title">Возможные расходы <span>(перечислите через запятую)</span></div>
-                <input type="text" class="additional_expenses-item" placeholder="название">
-
-            </div>
-
-            <div class="deposit">
-                <label class="deposit-label title">Депозит
-                    <input id="deposit-check" type="checkbox">
-                    <span class="deposit-checkmark"></span>
-                </label>
-                <select class="deposit-bank">
-                    <option value="">Процент</option>
-                    <option value="4">Сбербанк</option>
-                    <option value="5">Газпромбанк</option>
-                    <option value="6">Тинькофф</option>
-                    <option value="7">МТС Банк</option>
-                    <option value="8">АбсолютБанк</option>
-                    <option value="other">Другой</option>
-                </select>
-                <div class="deposit-calc">
-                    <input type="text" class="deposit-amount" placeholder="Сумма">
-                    <input type="text" class="deposit-percent" placeholder="Процент">
-                </div>
-            </div>
-
-            <div class="target">
-                <span class="target-title title">Цель</span>
-                <input type="text" class="target-amount" placeholder="Сумма">
-            </div>
-
-            <div class="period">
-                <div class="title period-title">Период расчета</div>
-                <input class="period-select" type="range" step="1" min="1" max="12" value="1">
-                <div class="title period-amount">1</div>
-            </div>
-
-        </div>
-
-        <div class="result">
-            <div class="result-budget_month">
-                <span class="title">Доход за месяц</span>
-                <input type="text" class="result-total budget_month-value" placeholder="0" disabled>
-            </div>
-            <div class="result-budget_day">
-                <span class="title">Дневной бюджет</span>
-                <input type="text" class="result-total budget_day-value" placeholder="0">
-            </div>
-
-            <div class="result-expenses_month">
-                <span class="title">Расход за месяц</span>
-                <input type="text" class="result-total expenses_month-value" placeholder="0" disabled>
-            </div>
-            <div class="result-additional_income">
-                <span class="title">Возможные доходы</span>
-                <input type="text" class="result-total additional_income-value" placeholder="Наименования" disabled>
-            </div>
-            <div class="result-additional_expenses">
-                <span class="title">Возможные расходы</span>
-                <input type="text" class="result-total additional_expenses-value" placeholder="Наименования" disabled>
-            </div>
-
-            <div class="result-income_period">
-                <span class="title">Накопления за период</span>
-                <input type="text" class="result-total income_period-value" placeholder="0" disabled>
-            </div>
-            <div class="result-target_month">
-                <span class="title">Срок достижения цели в месяцах</span>
-                <input type="text" class="result-total target_month-value" placeholder="Срок" disabled>
-            </div>
-            <div class="control">
-                <button id="start">Рассчитать</button>
-                <button id="cancel">Сбросить</button>
-            </div>
-        </div>
-
-
+      <ul class="todo todo-completed" id="completed"></ul>
     </div>
 
-
-</section>
-<!--<script src="./script/oop.js"></script>-->
-<script src="script.js"></script>
-</body>
+    <script src="scripts/script.js"></script>
+  </body>
 </html>
