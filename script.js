@@ -34,9 +34,6 @@ const depositPercent = document.querySelector(".deposit-percent");
 let expensesItems = document.querySelectorAll(".expenses-items");
 let incomeItems = document.querySelectorAll(".income-items");
 
-function numberHandler(value) {
-  return isNaN(parseFloat(value) && isFinite(value));
-}
 class AppData {
   constructor() {
     this.budget = 0;
@@ -58,7 +55,6 @@ class AppData {
   }
 
   start() {
-    console.log("Start sraboral");
     salaryAmount.value = salaryAmount.value.trim();
     if (!this.isNum(salaryAmount.value)) {
       alert("Введите суму месяного дохода!");
@@ -132,7 +128,6 @@ class AppData {
   }
 
   showResult() {
-    console.log("znachenie " + this.budgetMonth);
     budgetMonthValue.value = this.budgetMonth;
     budgetDayValue.value = Math.ceil(this.budgetDay);
     expensesMonthValue.value = this.expensesMonth;
@@ -260,9 +255,18 @@ class AppData {
   }
   changePercent() {
     const selectValue = this.value;
+
     if (selectValue === "other") {
-      let value = prompt("Введи свой процент!");
-      selectValue = value;
+      depositPercent.style.display = "inline-block";
+      depositPercent.addEventListener("input", (event) => {
+        event.preventDefault();
+        if (!isNaN(depositPercent.value) && depositPercent.value > 0) {
+          start.hidden = false;
+        } else {
+          alert("Введи число корректно");
+          start.hidden = true;
+        }
+      });
     } else {
       depositPercent.value = selectValue;
     }
@@ -296,21 +300,8 @@ class AppData {
 
     cancel.addEventListener("click", this.reset.bind(this));
     depositCheck.addEventListener("change", this.depositHendler.bind(this));
-
-    // salaryAmount.addEventListener("keyup", appData.check);
   }
 }
 
 let newData = new AppData();
 newData.eventListeners();
-
-/*
-  let addExp = [];
-
-  for (let i = 0; i < appData.addExpenses.length; i++) {
-    let element = appData.addExpenses[i].trim();
-    element =
-      element.chartAt(0).toUpperCase() + element.substring(1).toLowerCase();
-    addExp.push(element);
-  }
-*/
